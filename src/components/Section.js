@@ -1,23 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = () => {
+const Section = ({title, desc, backgroundImg, leftBtn, rightBtn}) => {
+    
+
     return (
        
-       <Container>
+       <Container bgImage={backgroundImg}>
            
            <ItemText>
-           <h1>Modelo S</h1>
-           <p>Solicítalo online para entrega inmediata</p>
+           <h1>{ title }</h1>
+           <p>{ desc }</p>
            </ItemText>
            
             <BottomButtons>
                 <Buttons>
                     <LeftButton>
-                        Custom Order
+                        {leftBtn}
                     </LeftButton>
                     <RightButton>
-                        Existing Inventory
+                        {rightBtn}
                     </RightButton>
                 </Buttons>
                 <DownArrow src='/images/down-arrow.svg' />
@@ -36,7 +38,7 @@ const Container = styled.div`
     background-size-: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/images/model-s.jpg');
+    background-image: ${props => `url('/images/${props.bgImage}')`};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
