@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal'
 
 const Section = ({title, desc, backgroundImg, leftBtn, rightBtn}) => {
     
@@ -7,27 +8,30 @@ const Section = ({title, desc, backgroundImg, leftBtn, rightBtn}) => {
     return (
        
        <Container bgImage={backgroundImg}>
-           
-           <ItemText>
-           <h1>{ title }</h1>
-           <p>{ desc }</p>
-           </ItemText>
-           
+          <Fade bottom>
+                <ItemText>
+                    <h1>{ title }</h1>
+                    <p>{ desc }</p>
+                </ItemText>
+           </Fade> 
             <BottomButtons>
                 <Buttons>
                     <LeftButton>
                         {leftBtn}
                     </LeftButton>
-                    <RightButton>
-                        {rightBtn}
-                    </RightButton>
+                    
+                    { rightBtn && 
+                        <RightButton>
+                            {rightBtn}
+                        </RightButton> 
+                    }
                 </Buttons>
                 <DownArrow src='/images/down-arrow.svg' />
            </BottomButtons>
 
        </Container>
 
-    );
+    ); 
 }
 
 export default Section;
@@ -43,6 +47,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
+
     `
 
     const ItemText = styled.div`
